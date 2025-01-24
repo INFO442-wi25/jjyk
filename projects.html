@@ -3,23 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Project Search</title>
     <link rel="stylesheet" href="index.css">
+    <script defer>
+        function searchProjects() {
+            const searchInput = document.getElementById('projectSearchInput').value.toLowerCase();
+            const projects = document.querySelectorAll('.project');
+
+            projects.forEach(project => {
+                const projectName = project.dataset.name.toLowerCase();
+                const projectMembers = project.dataset.member.toLowerCase();
+
+                if (projectName.includes(searchInput) || projectMembers.includes(searchInput)) {
+                    project.classList.remove('hidden');
+                } else {
+                    project.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <header>
         <div class="navBar">
             <ul class="menu">
+<<<<<<< Updated upstream
                 <li class="menu_item"><a href="/index.html" >Students</a></li>
                 <li class="menu_item"><a href="/Projects.html" >Projects</a></li>
+=======
+                <li class="menu_item"><a href="index.html">Students</a></li>
+                <li class="menu_item"><a href="projects.html">Projects</a></li>
+>>>>>>> Stashed changes
                 <li class="menu_button">
                     <div class="profile-menu">
                         <button class="users"><img src="./Asset/person.png" alt="person"></button>
                         <ul class="submenu">
+<<<<<<< Updated upstream
                             <li class="profile"><a href="/Profile.html" >Profile</a></li>
                             <li class="projects"><a href="/Projects.html" >Projects</a></li>
                             <li class="group"><a href="/Group.html" >Group</a></li>
                             <li class="group"><a href="/logout.html" >Logout</a></li>
+=======
+                            <li class="profile"><a href="Profile.html">Profile</a></li>
+                            <li class="projects"><a href="Projects.html">Projects</a></li>
+                            <li class="group"><a href="Group.html">Group</a></li>
+                            <li class="group"><a href="logout.html">Logout</a></li>
+>>>>>>> Stashed changes
                         </ul>
                     </div>
                 </li>
@@ -29,42 +58,37 @@
     <main>
         <div class="search_create">
             <div class="pro_search">
-                <input type="text">
-                <button class = "search_pro_button">Search</button>
-            </div>
-            <div>
-                <button class="create_button">Create a Project</button>
+                <input type="text" id="projectSearchInput" placeholder="Search projects..." oninput="searchProjects()">
             </div>
         </div>
-        <div class="projects">
-            <div class="project">
+        <div class="projects" id="projectsList">
+            <div class="project" data-name="My Project" data-member="Jinchuan Wu,Yujie Hu">
                 <div class="project_name">
                     <h2><a href="my_project.html">My Project</a></h2>
                 </div>
                 <div class="project_member">
-                    <h4>Starter: Jinchuan Wu<h4>
+                    <h4>Starter: Jinchuan Wu</h4>
                     <h4>Member:</h4>
                     <p>Yujie Hu</p>
                 </div>
                 <div class="memeber_count">
-                    <span>3 / 4<span>
+                    <span>3 / 4</span>
                 </div>
                 <div> 
                     <button class="join_button">Join</button>
                 </div>
             </div>
-            
-            <div class="project">
+            <div class="project" data-name="Your Project" data-member="Jinchuan Wu,Yujie Hu">
                 <div class="project_name">
                     <h2><a href="your_project.html">Your Project</a></h2>
                 </div>
                 <div class="project_member">
-                    <h4>Starter: Jinchuan Wu<h4>
+                    <h4>Starter: Jinchuan Wu</h4>
                     <h4>Member:</h4>
                     <p>Yujie Hu</p>
                 </div>
                 <div class="memeber_count">
-                    <span>3 / 4<span>
+                    <span>3 / 4</span>
                 </div>
                 <div> 
                     <button class="join_button">Join</button>
@@ -72,8 +96,6 @@
             </div>
         </div>
     </main>
-    <footer>
-
-    </footer>
+    <footer></footer>
 </body>
 </html>
