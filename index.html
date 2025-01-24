@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Search</title>
+    <title>Students</title>
     <link rel="stylesheet" href="index.css">
     <script defer>
         function searchStudents() {
-            const searchInput = document.getElementById('studentSearchInput').value.toLowerCase();
-            const students = document.querySelectorAll('.card');
+            const searchInput = document.querySelector(".search input").value.toLowerCase();
+            const cards = document.querySelectorAll(".card");
 
-            students.forEach(student => {
-                const studentName = student.dataset.name.toLowerCase();
-                const studentRole = student.dataset.role.toLowerCase();
-                const studentEmail = student.dataset.email.toLowerCase();
+            cards.forEach(card => {
+                const name = card.querySelector("h2").textContent.toLowerCase();
+                const roles = Array.from(card.querySelectorAll("span")).map(span => span.textContent.toLowerCase());
 
-                if (
-                    studentName.includes(searchInput) ||
-                    studentRole.includes(searchInput) ||
-                    studentEmail.includes(searchInput)
-                ) {
-                    student.classList.remove('hidden');
+                // 检查是否包含关键词
+                const matches = name.includes(searchInput) || roles.some(role => role.includes(searchInput));
+                if (matches) {
+                    card.style.display = "block";
                 } else {
-                    student.classList.add('hidden');
+                    card.style.display = "none";
                 }
             });
         }
@@ -32,28 +29,16 @@
     <header>
         <div class="navBar">
             <ul class="menu">
-<<<<<<< Updated upstream
-                <li class="menu_item"><a href="/Students.html" >Students</a></li>
-                <li class="menu_item"><a href="/Projects.html" >Projects</a></li>
-=======
-                <li class="menu_item"><a href="index.html">Students</a></li>
-                <li class="menu_item"><a href="projects.html">Projects</a></li>
->>>>>>> Stashed changes
+                <li class="menu_item"><a href="Students.html">Students</a></li>
+                <li class="menu_item"><a href="Projects.html">Projects</a></li>
                 <li class="menu_button">
                     <div class="profile-menu">
                         <button class="users"><img src="./Asset/person.png" alt="person"></button>
                         <ul class="submenu">
-<<<<<<< Updated upstream
-                            <li class="profile"><a href="/Profile.html" >Profile</a></li>
-                            <li class="projects"><a href="/Projects.html" >Projects</a></li>
-                            <li class="group"><a href="/Group.html" >Group</a></li>
-                            <li class="group"><a href="/logout.html" >Logout</a></li>
-=======
                             <li class="profile"><a href="Profile.html">Profile</a></li>
                             <li class="projects"><a href="Projects.html">Projects</a></li>
                             <li class="group"><a href="Group.html">Group</a></li>
                             <li class="group"><a href="logout.html">Logout</a></li>
->>>>>>> Stashed changes
                         </ul>
                     </div>
                 </li>
@@ -62,51 +47,49 @@
     </header>
     <main>
         <div class="search">
-            <input type="text" id="studentSearchInput" placeholder="Search students..." oninput="searchStudents()">
+            <input type="text" placeholder="Search by name or role..." oninput="searchStudents()">
+            <button class="search_button" onclick="searchStudents()">search</button>
         </div>
-        <div class="student_cards" id="studentCards">
-            <div class="card" data-name="ChangShu Anuo" data-role="software engineer,designer" data-email="anou@uw.edu">
+        <div class="student_cards">
+            <div class="card">
                 <img src="./Asset/images.jpeg" alt="person">
                 <div class="introduction">
                     <h2>ChangShu Anuo</h2>
                     <span>software engineer</span>
                     <span>designer</span>
                 </div>
-                <button>more</button>
+                <a href="other_pro.html" class="button">more</a>
             </div>
-            <div class="card" data-name="Ding Zhen" data-role="designer" data-email="dingzhen@uw.edu">
+            <div class="card">
                 <img src="./Asset/QkjX5_5c.jpg" alt="person">
                 <div class="introduction">
-<<<<<<< Updated upstream
-                    <h2>Ding zhen</h2>
+                    <h2>Ding Zhen</h2>
                     <span>software engineer</span>
                     <span>designer</span>
                 </div>
-                <button>more</button>
+                <a href="other_pro.html" class="button">more</a>
             </div>
             <div class="card">
                 <img src="./Asset/okwyAGnIOALkBfdeBAaalaOdSA7eGANgIQLEA2~tplv-dy-aweme-images-v2-3000-3000-q75.jpg" alt="person">
                 <div class="introduction">
-                    <h2>Xiang zuo</h2>
+                    <h2>Xiang Zuo</h2>
                     <span>software engineer</span>
                     <span>designer</span>
                 </div>
-                <button>more</button>
+                <a href="other_pro.html" class="button">more</a>
             </div>
             <div class="card">
                 <img src="./Asset/DSC04650.JPG" alt="person">
                 <div class="introduction">
                     <h2>Jinchuan Wu</h2>
                     <span>software engineer</span>
-=======
-                    <h2>Ding Zhen</h2>
->>>>>>> Stashed changes
                     <span>designer</span>
                 </div>
-                <button>more</button>
+                <a href="other_pro.html" class="button">more</a>
             </div>
         </div>
     </main>
-    <footer></footer>
+    <footer>
+    </footer>
 </body>
 </html>
