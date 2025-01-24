@@ -8,19 +8,15 @@
     <script defer>
         function searchStudents() {
             const searchInput = document.querySelector(".search input").value.toLowerCase();
-            const cards = document.querySelectorAll(".card");
+            const cards = document.querySelectorAll(".student_cards .card");
 
             cards.forEach(card => {
                 const name = card.querySelector("h2").textContent.toLowerCase();
                 const roles = Array.from(card.querySelectorAll("span")).map(span => span.textContent.toLowerCase());
 
-                // 检查是否包含关键词
                 const matches = name.includes(searchInput) || roles.some(role => role.includes(searchInput));
-                if (matches) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
+
+                card.style.display = matches ? "block" : "none";
             });
         }
     </script>
